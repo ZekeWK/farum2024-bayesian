@@ -253,13 +253,31 @@ The world is full of systems where no model we can construct, either due to comp
 	
 \end{example}
 
-\begin{definition}[Distribution given]
-	The density function of \(X | Y\) is
+\begin{definition}[Conditional distribution]
+	The probability or distribution function of \(X | Y\) is
 	\[
-		f _{X|Y}(x|y) = \frac{f _{X, Y}(x, Y)}{f _{Y}(y)}.
+		f _{X|Y}(x|y) = \frac{f _{X, Y}(x, Y)}{f _{Y}(y)}
 	\]
 	where \(f _{Y}(y)\) is the marginal density function of \(f _{X, Y}(x, y)\).
 \end{definition}
+
+\begin{obs}
+	Let \(\Delta y> 0\) and \(I = \left[y, y + \Delta Y\right]\) 
+	\begin{align*}
+		P(X<x| Y \in I) &= \frac{P(X<x \land Y \in I)}{P(Y \in I)} \\
+										&= \frac{ \int_{y}^{y + \Delta y}\int_{-\infty }^{x} f _{X, Y}(X, Y)dxdy}{\int_{y }^{y + \Delta y} f  _{Y}(y)dy}.
+	\end{align*}
+	If we let \(\Delta y \rightarrow 0\), using the mean value theorem for integrals we get
+	\begin{align*}
+		P(X<x | Y \in I) &= \frac{\Delta y\int_{-\infty }^{x} f _{X, Y}(X, Y)dx}{\Delta y f_Y(y)} \\
+		&= \frac{\int_{-\infty }^{x} f _{X, Y}(X, Y)dx}{f_Y(y)} \\
+	\end{align*}
+	This would correspond to a distribution function of \(X\) given \(Y = y\). Despite \(Y\) never being exactly \(Y\), the same applies to the numerator, and the limit is defined. By integrating we would intstead get the density funciton of \(X\) given \(Y = y\), as defined in the definition.
+	
+	
+\end{obs}
+
+
 
 \begin{example}
 	Let \(X, Y\) be result of two independent dice, and \(Z = X+Y\). When given the result of \(X\), we have 
